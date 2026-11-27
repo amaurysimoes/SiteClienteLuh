@@ -40,8 +40,18 @@ npm run dev
 
 ## Site no ar (GitHub Pages)
 
-Endereço: https://amaurysimoes.github.io/SiteClienteLuh/
+Endereço: https://amaurysimoes.github.io/SiteClienteLuh/ (abre o site em `.../docs/`)
 
-- Em **Settings → Pages → Build and deployment → Source**, deixar **GitHub Actions** (não "Deploy from a branch").
-- Todo `git push` na `main` roda `.github/workflows/deploy.yml`, que faz `npm run build` e publica a pasta `dist`.
-- Acompanhe em **Actions** no GitHub; leva 1–2 minutos.
+O GitHub Pages publica a branch `main` pela raiz. O site compilado fica em `docs/`
+e o `index.html` da raiz redireciona para lá quando aberto no github.io.
+
+**Toda vez que mudar o site, compile antes de subir:**
+
+```bash
+npm run build                   # gera/atualiza a pasta docs/
+git add .
+git commit -m "descreva a mudança"
+git push                        # o site atualiza em 1–2 minutos
+```
+
+Sem o `npm run build`, o código sobe, mas o site no ar continua com a versão anterior.
