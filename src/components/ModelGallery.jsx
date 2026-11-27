@@ -30,9 +30,25 @@ export default function ModelGallery({ model, onClose }) {
     };
   }, [go, onClose]);
 
+  // Centraliza a miniatura ativa rolando só a faixa de miniaturas (sem mexer na rolagem da galeria).
   React.useEffect(() => {
-    thumbsRef.current?.children[index]?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    const strip = thumbsRef.current;
+    const thumb = strip?.children[index];
+    if (!strip || !thumb) return;
+    strip.scrollTo({ left: thumb.offsetLeft - (strip.clientWidth - thumb.offsetWidth) / 2, behavior: 'smooth' });
   }, [index]);
+
+  // Arrastar para o lado troca a foto no celular.
+  const touchStart = React.useRef(null);
+  const onTouchStart = (e) => { const t = e.touches[0]; touchStart.current = { x: t.clientX, y: t.clientY }; };
+  const onTouchEnd = (e) => {
+    if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.current.x;
+    const dy = t.clientY - touchStart.current.y;
+    touchStart.current = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) go(dx < 0 ? 1 : -1);
+  };
 
   const look = looks[index];
 
@@ -41,7 +57,7 @@ export default function ModelGallery({ model, onClose }) {
       <div className="gallery" role="dialog" aria-modal="true" aria-label={`Looks da ${model.name}`} onClick={(e) => e.stopPropagation()}>
         <button ref={closeRef} className="gallery-close" aria-label="Fechar galeria" onClick={onClose}><X size={20} /></button>
 
-        <div className="gallery-stage">
+        <div className="gallery-stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
           {missing[look.slug]
             ? <div className="gallery-placeholder"><ImageOff size={28} /><span>Foto em breve</span></div>
             : <img key={look.image} src={look.image} alt={`${model.name} veste ${look.name.toLowerCase()}`} onError={() => markMissing(look.slug)} />}
