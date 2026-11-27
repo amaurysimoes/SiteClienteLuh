@@ -20,7 +20,7 @@ const campaign = {
 
 export function looksFor(modelSlug) {
   return [
-    { slug: 'campanha', ...campaign[modelSlug], image: `/images/${modelSlug}.webp` },
-    ...lookTypes.map((look) => ({ ...look, image: `/images/looks/${modelSlug}/${look.slug}.webp` })),
+    { slug: 'campanha', ...campaign[modelSlug], image: `images/${modelSlug}.webp` },
+    ...lookTypes.map((look) => ({ ...look, image: `images/looks/${modelSlug}/${look.slug}.webp` })),
   ];
 }

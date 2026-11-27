@@ -37,3 +37,11 @@ cd SiteClienteLuh
 npm install
 npm run dev
 ```
+
+## Site no ar (GitHub Pages)
+
+Endereço: https://amaurysimoes.github.io/SiteClienteLuh/
+
+- Em **Settings → Pages → Build and deployment → Source**, deixar **GitHub Actions** (não "Deploy from a branch").
+- Todo `git push` na `main` roda `.github/workflows/deploy.yml`, que faz `npm run build` e publica a pasta `dist`.
+- Acompanhe em **Actions** no GitHub; leva 1–2 minutos.

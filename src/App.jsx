@@ -4,9 +4,9 @@ import ModelGallery from './components/ModelGallery.jsx';
 import './index.css';
 
 const models = [
-  { slug: 'ane', name: 'Ane', role: 'A beleza em cada curva', image: '/images/ane.webp', alt: 'Ane veste lingerie de renda bordô em um estúdio de luz quente', number: '01' },
-  { slug: 'dany', name: 'Dany', role: 'Um toque de ousadia', image: '/images/dany.webp', alt: 'Dany veste lingerie de renda preta em um estúdio elegante', number: '02' },
-  { slug: 'mya', name: 'Mya', role: 'Leve como você', image: '/images/mya.webp', alt: 'Mya veste lingerie de cetim champanhe em um estúdio claro', number: '03' },
+  { slug: 'ane', name: 'Ane', role: 'A beleza em cada curva', image: 'images/ane.webp', alt: 'Ane veste lingerie de renda bordô em um estúdio de luz quente', number: '01' },
+  { slug: 'dany', name: 'Dany', role: 'Um toque de ousadia', image: 'images/dany.webp', alt: 'Dany veste lingerie de renda preta em um estúdio elegante', number: '02' },
+  { slug: 'mya', name: 'Mya', role: 'Leve como você', image: 'images/mya.webp', alt: 'Mya veste lingerie de cetim champanhe em um estúdio claro', number: '03' },
 ];
 
 const socialLinks = [
@@ -35,7 +35,7 @@ function App() {
     <header className="header">
       <button className="icon-button mobile-menu" aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)}><Menu size={21} /></button>
       <nav className={menuOpen ? 'nav nav-open' : 'nav'}><a href="#colecao">Coleção</a><a href="#modelos">Nossas musas</a><a href="#marca">Nossa essência</a></nav>
-      <a className="brand" href="#top" aria-label="La Belle Luh início"><img src="/images/wordmark.png" alt="La Belle Luh" /></a>
+      <a className="brand" href="#top" aria-label="La Belle Luh início"><img src="images/wordmark.png" alt="La Belle Luh" /></a>
       <div className="header-actions"><a href="#modelos" className="account-link">Descubra seu estilo</a><button className="icon-button bag" aria-label="Salvar favoritos" onClick={() => setSaved(!saved)}><ShoppingBag size={20}/><span className="bag-count">{saved ? '1' : '0'}</span></button></div>
     </header>
 
@@ -49,7 +49,7 @@ function App() {
           <div className="hero-note"><Sparkles size={15}/> Delicadeza que começa por dentro</div>
         </div>
         <div className="hero-art">
-          <div className="hero-image"><img src="/images/mya.webp" alt="Mya em lingerie de cetim, envolta em luz suave" /></div>
+          <div className="hero-image"><img src="images/mya.webp" alt="Mya em lingerie de cetim, envolta em luz suave" /></div>
         </div>
         <div className="hero-vertical">BELEZA QUE FLORESCE DE DENTRO PARA FORA</div>
       </section>
@@ -69,7 +69,7 @@ function App() {
       <section className="newsletter" id="newsletter"><div><h2>Receba nossa coleção <em>em seu e-mail.</em></h2></div><form onSubmit={e => {e.preventDefault(); e.currentTarget.reset(); alert('Pronto! Você vai receber nossa coleção em seu e-mail.')}}><label className="sr-only" htmlFor="email">Seu e-mail</label><input id="email" type="email" placeholder="Seu e-mail" required/><button type="submit" aria-label="Inscrever-se"><ArrowRight size={19}/></button></form></section>
     </main>
 
-    <footer className="footer"><div className="footer-brand"><img src="/images/wordmark.png" alt="La Belle Luh"/><span>Beleza que floresce de dentro para fora.</span></div><div className="footer-links"><a href="#colecao">Coleção</a><a href="#modelos">Nossas musas</a><a href="#marca">Nossa essência</a></div><div className="footer-social"><span>Siga a gente</span><div className="social-icons">{socialLinks.map(({name,href,Icon}) => href ? <a className="social-icon" key={name} href={href} aria-label={name} title={name} target="_blank" rel="noreferrer"><Icon size={18}/></a> : <span className="social-icon social-icon-disabled" key={name} role="img" aria-label={`${name} — link a configurar`} title={`${name} — link a configurar`}><Icon size={18}/></span>)}</div></div><div className="copyright">© {new Date().getFullYear()} La Belle Luh · Feito com carinho no Brasil</div></footer>
+    <footer className="footer"><div className="footer-brand"><img src="images/wordmark.png" alt="La Belle Luh"/><span>Beleza que floresce de dentro para fora.</span></div><div className="footer-links"><a href="#colecao">Coleção</a><a href="#modelos">Nossas musas</a><a href="#marca">Nossa essência</a></div><div className="footer-social"><span>Siga a gente</span><div className="social-icons">{socialLinks.map(({name,href,Icon}) => href ? <a className="social-icon" key={name} href={href} aria-label={name} title={name} target="_blank" rel="noreferrer"><Icon size={18}/></a> : <span className="social-icon social-icon-disabled" key={name} role="img" aria-label={`${name} — link a configurar`} title={`${name} — link a configurar`}><Icon size={18}/></span>)}</div></div><div className="copyright">© {new Date().getFullYear()} La Belle Luh · Feito com carinho no Brasil</div></footer>
     {openModel && <ModelGallery model={openModel} onClose={closeGallery} />}
   </>;
 }
