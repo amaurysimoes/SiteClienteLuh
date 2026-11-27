@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vite/
+app_android/android/
+app_android/apk/
+app_android/node_modules/
+app_android/www/
+
+# Arquivo-fonte da marca (94 MB)
+Logomarca/LahBelleLuh.pdf
