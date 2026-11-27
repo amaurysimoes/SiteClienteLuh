@@ -30,7 +30,6 @@ export default function ModelGallery({ model, onClose }) {
     };
   }, [go, onClose]);
 
-  // Centraliza a miniatura ativa rolando só a faixa de miniaturas (sem mexer na rolagem da galeria).
   React.useEffect(() => {
     const strip = thumbsRef.current;
     const thumb = strip?.children[index];
@@ -38,7 +37,6 @@ export default function ModelGallery({ model, onClose }) {
     strip.scrollTo({ left: thumb.offsetLeft - (strip.clientWidth - thumb.offsetWidth) / 2, behavior: 'smooth' });
   }, [index]);
 
-  // Arrastar para o lado troca a foto no celular.
   const touchStart = React.useRef(null);
   const onTouchStart = (e) => { const t = e.touches[0]; touchStart.current = { x: t.clientX, y: t.clientY }; };
   const onTouchEnd = (e) => {

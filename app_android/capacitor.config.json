@@ -1,0 +1,8 @@
+{
+  "appId": "com.labelleluh.app",
+  "appName": "La Belle Luh",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#f4f4e9"
+  }
+}

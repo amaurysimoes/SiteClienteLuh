@@ -1,8 +1,3 @@
-// Looks exibidos na galeria flutuante de cada modelo.
-// Para adicionar uma foto, salve o arquivo em public/images/looks/<modelo>/<arquivo>.webp
-// (proporção vertical 2:3, ex.: 1200x1800). Enquanto o arquivo não existir,
-// a galeria mostra um card "Foto em breve" para aquela peça.
-
 export const lookTypes = [
   { slug: 'baby-doll', name: 'Baby doll', description: 'Leveza e transparência na medida certa para noites especiais.' },
   { slug: 'calcinha-transparente', name: 'Calcinha transparente', description: 'Tule delicado que acompanha o corpo sem marcar.' },

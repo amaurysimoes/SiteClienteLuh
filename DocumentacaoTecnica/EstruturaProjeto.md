@@ -4,7 +4,11 @@ Organização adotada como padrão para este site Vite + React, seguindo a estru
 
 ```text
 LaBelleLu-site/
-├── app_android/                 # espaço reservado para a versão Android/Capacitor
+├── app_android/                 # app Android (Capacitor) com o mesmo código do site
+│   ├── android/                 # projeto nativo (ícones, tela de abertura, Gradle)
+│   ├── capacitor.config.json
+│   └── package.json             # scripts web / sync / apk
+├── docs/                        # site compilado publicado no GitHub Pages
 ├── DocumentacaoTecnica/         # documentação do projeto
 │   └── EstruturaProjeto.md
 ├── img/                         # imagens originais e arquivos fonte da marca
@@ -24,6 +28,20 @@ LaBelleLu-site/
 └── README.md
 ```
 
-`node_modules/` aparece depois de `npm install` e `dist/` depois de `npm run build`. Os dois são saídas geradas e ficam fora do controle de versão. A pasta `app_android/` está reservada; sua estrutura interna será criada quando o app Android for configurado.
+`node_modules/` aparece depois de `npm install`. `npm run build` gera `docs/`, que é versionada porque o GitHub Pages publica dali. Em `app_android/`, as pastas `www/`, `apk/` e `node_modules/` são geradas e ficam fora do Git.
 
 As imagens originais estão em `img/`. As versões WebP servidas pela página ficam em `public/images/` para serem carregadas pelo navegador sem importações extras.
+
+## App Android
+
+- Compatível do **Android 5.1 (API 22)** ao mais recente; compilado para o Android 14 (API 34).
+- O build web inclui um pacote com polyfills para WebViews antigas (`@vitejs/plugin-legacy`).
+- Pré-requisitos: JDK 17 e Android SDK (platform 34).
+
+```bash
+cd app_android
+npm install                      # só na primeira vez
+npm run apk                      # gera app_android/apk/LaBelleLuh.apk
+```
+
+O APK gerado é de depuração (instalação direta no celular). Para publicar na Play Store é preciso gerar um AAB assinado com chave própria e atualizar o `targetSdkVersion` para o mínimo exigido pela loja.

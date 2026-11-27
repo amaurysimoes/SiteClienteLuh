@@ -55,3 +55,14 @@ git push                        # o site atualiza em 1–2 minutos
 ```
 
 Sem o `npm run build`, o código sobe, mas o site no ar continua com a versão anterior.
+
+## Atualizar o app Android
+
+Depois de mudar o site, gere o APK de novo:
+
+```bash
+cd app_android
+npm run apk                      # app_android/apk/LaBelleLuh.apk
+```
+
+Requer `JAVA_HOME` apontando para um JDK 17 (ex.: `~/.local/jdk/jdk-17.0.21.1+2`) e o Android SDK em `~/Android/Sdk`.

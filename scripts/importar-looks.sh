@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Converte as fotos geradas (img/looks/<modelo>/<peca>.png|jpg|jpeg|webp) para
-# public/images/looks/<modelo>/<peca>.webp em 1200x1800 (2:3), recortando a partir do topo.
-# Também importa img/<modelo>-original.* -> public/images/<modelo>.webp quando ainda não existir.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 IM=$(command -v magick || command -v convert) || { echo "Instale o ImageMagick."; exit 1; }
